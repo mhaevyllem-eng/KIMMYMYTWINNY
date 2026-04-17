@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BONUS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+body, html {
+  margin: 0;
+  font-family: 'Press Start 2P', monospace;
+  color: #e0e0d1;
+  background: url("https://i.postimg.cc/vHFj90rW/bgoption1.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body {
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+/* INTRO */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+/* BUTTON */
+#unlockBtn {
+  margin-top: 20px;
+  padding: 14px 28px;
+  background: #a2ff6c;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 0 20px #a2ff6c;
+}
+
+/* MESSAGE PAGE */
+.overlay {
+  min-height: 100vh;
+  display: none;
+  background: rgba(0,0,0,0.6);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+h2 {
+  color: #a2ff6c;
+  text-shadow: 0 0 10px #a2ff6c;
+}
+
+/* MESSAGE BOX */
+.message-box {
+  max-width: 850px;
+  margin: auto;
+  font-size: 14px;
+  line-height: 1.8;
+  background: rgba(0,0,0,0.35);
+  padding: 20px;
+  border: 2px solid #a2ff6c;
+  box-shadow: 0 0 25px #a2ff6c;
+  white-space: pre-wrap;
+  min-height: 200px;
+}
+
+/* CHOICES */
+#choiceBox {
+  margin-top: 40px;
+  opacity: 0;
+  transition: 1s;
+}
+
+button {
+  font-family: inherit;
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <h1>Hi bes !!</h1>
+  <p>Click unlock</p>
+  <button id="unlockBtn">🔓 Unlock</button>
+</div>
+
+<!-- MESSAGE -->
+<div class="overlay" id="messagePage">
+
+  <h2>Message for you</h2>
+
+  <div class="message-box" id="message"></div>
+
+  <!-- CHOICES -->
+  <div id="choiceBox">
+
+    <p style="color:#a2ff6c; font-size:12px;">
+      What do you want to do next?
+    </p>
+
+    <button id="continueReading" style="
+      margin:10px;
+      padding:10px 15px;
+      background:#a2ff6c;
+      border:none;
+      cursor:pointer;
+    ">
+      📖 Continue Reading
+    </button>
+
+    <button id="goBack" style="
+      margin:10px;
+      padding:10px 15px;
+      background:#222;
+      color:#a2ff6c;
+      border:1px solid #a2ff6c;
+      cursor:pointer;
+    ">
+      🔁 Back to Main Page
+    </button>
+
+  </div>
+
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="epic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const intro = document.getElementById("intro");
+const page = document.getElementById("messagePage");
+const btn = document.getElementById("unlockBtn");
+const msg = document.getElementById("message");
+const choiceBox = document.getElementById("choiceBox");
+
+const text = `Hi Kimmy,
+I don’t even know where to start without already wanting to cry… (I already am,,, I’m a crybaby fr 😭)
+I’ve been staring at this for a while, not knowing how to start… because honestly, how do you even put into words what someone means to you?
+I didn’t expect this school year to be this meaningful. Out of everything—online classes, random groupings, unexpected moments—I didn’t expect that I would find someone like you. Someone who would become such an important part of my everyday life.
+Somewhere along the way, hindi ko na namalayan… you became my comfort person. Yung presence mo, kahit online lang, it felt familiar, safe, and warm. Parang kahit anong pagod or stress ko, okay lang—kasi nandyan ka.
+I keep thinking about how everything started.
+I still remember it like it was yesterday—November 4, 2025. We were in a GMeet call, discussing our upcoming stream. Hindi pa tayo close noon, not until niloko kita 😭 I jokingly said, “si Kim niloloko si Alvarez,” habang inaasar natin siya kasi ‘super busy’ niya (maraming birthday-an HAHAHA). And after that, we started getting closer.
+As days and weeks went by, I found myself enjoying your presence more and more. You’re funny, smart (stop doubting yourself), beautiful (it’s true!), and a really good teacher (teaching me Korean sa Discord call T-T tanda mo pa ba yun? 😭). I have so much more to say, but I’m honestly not that good with words… I just hope this letter can make you feel kahit konti lang of what I truly want to say.
+Ang funny no? Kasi hindi ko naman inexpect na magiging ganito tayo ka-close. Pero here we are… and now I can’t imagine this school year without you in it.
+These are some of my favorite memories with you:
+Yung nag-message ka sa GC natin (LifeLabs) na parang nagalit ka kasi walang nag-o-open ng mic, tapos biglang nag-open lahat nung nag-join ka 😭 I LOVE YOU SM FOR THAT
+Yung naka-call tayo while playing horror games sa Roblox (you’re so brave for that, queen), tapos may creature dun na sabi mo si “Lacson/Wizard” 😭
+Yung stream natin—you were so cool. I really admire how calm and good you are when playing, especially horror and escape games. YOU’RE MY SAVIOR FR, THE GOAT 😭
+Watching you be an MC. I’m so proud of you for stepping out of your comfort zone 🥹 I loved how confident and natural you were. I’m really sorry I wasn’t able to join that time—may unexpected lang na nangyari 🥹
+And lastly, yung end-year party na instead na sumali sa meet… nag-Roblox nalang tayo 😭
+Bonus:
+Yung nagsasabihan tayo ng “tea” 😭 I MISS THAT SO MUCH
+Those moments may seem small to others, but to me, they meant everything. Kasi nandun ka. And that made it special.
+I also want you to know this—
+You were there during a time na I was growing so much as a person. And you became part of that growth.
+If you knew me before… ibang-iba talaga ako. But this year, especially in APEC, I changed. I became more open, more expressive, and more confident to be myself. And I genuinely believe that people like you helped me become that version of me.
+You once asked how to be a leader… and honestly, my answer is simple: just be yourself. Treat your groupmates the way you want to be treated. That’s what you already do. 🥹
+When you ask me for advice, it makes me feel like I did something right too. Like I became someone worth looking up to—even just a little. And I’m really thankful for that (alongside with you, of course!!).
+So thank you… for being part of my growth.
+Thank you for helping me become someone I’m proud of.
+I don’t think you realize how much your presence affected me.
+Yung simpleng pagiging ikaw mo—your energy, your personality, the way you talk, the way you react—those stayed with me more than you think.
+And maybe that’s why this is so hard for me.
+Because I got attached. Not just in a “classmate” way, but in a way where I genuinely care about you and our friendship. Yung tipong kahit matapos na yung school year, ayoko mawala yung connection natin.
+Also, please… stop doubting yourself. You need to trust yourself more. I know you can be a leader—you’re just scared of the responsibility, and that’s okay. But trust me, I’ll always be your “one call away.”
+You have questions? Ask me.
+You don’t know how to approach your groupmates? Ask me.
+Anything at all—you’re never a bother to me.
+I genuinely want to message you sometimes, but I don’t know what to say 😭 and I get shy… baka tulog ka, busy, or playing 🤨 HAHAHA
+I’m really going to miss you.
+Like, more than I can explain.
+Hindi lang presence mo yung mamimiss ko… I’ll miss everything.
+Even the smallest things—those were my favorite.
+But even if things change, I want you to know this:
+You will always have a special place in my life.
+No matter how busy things get, no matter where life takes us, I’ll always be here for you.
+I don’t want this to be a goodbye.
+I want this to be a “see you again.”
+Because I still want to laugh with you, talk to you, and make more memories with you—even if it’s not the same as before.
+And if there’s one thing I hope for, it’s this:
+I hope we never become strangers.
+Thank you for everything, Kimmy.
+For the memories, the comfort, the laughter, and for simply being you.
+You made this year unforgettable for me.
+More years to come for our friendship!!
+I love you so much 🤍
+– your fr twin
+“This isn’t a goodbye, but a see you later (soon) in law school”
+Bonus:
+I rarely write long messages like this. I only do it for the people I truly love, cherish, admire, and care about—and you’re one of them.
+I won’t get tired of saying I love you, because I really do. No amount of distance or time will ever make me forget you.
+And whenever I listen to these songs:
+Old Love – Yuji & Putri Dahlia
+M. – Anıl Emre Daldal
+Sa Dulo ng Hangganan – IV of Spades
+Double Take – dhruv
+Still With You – Jungkook
+My You – Jungkook
+They all have this calming vibe… and that’s exactly how I feel when I’m with you. Your presence calms me down, especially when I’m overwhelmed.
+I love you so much. I hope you know how much I care about you—like a real twin. (Because you are!!!)
+I’m even listening to a cheerful song while writing this… but I’m still crying.
+I only cry like this for people I’m really attached to.
+And I really, really love you, twin.`;
+
+let i = 0;
+
+/* UNLOCK */
+btn.addEventListener("click", () => {
+  intro.style.display = "none";
+  page.style.display = "block";
+
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.5;
+  music.play();
+
+  typeWriter();
+});
+
+/* TYPEWRITER */
+function typeWriter() {
+  if (i < text.length) {
+    msg.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 25);
+  } else {
+    choiceBox.style.opacity = "1";
+  }
+}
+
+/* BUTTONS */
+document.getElementById("goBack").addEventListener("click", () => {
+  window.location.href = "index.html";
+});
+
+document.getElementById("continueReading").addEventListener("click", () => {
+  choiceBox.style.opacity = "0";
+});
+
+/* FADE IN */
+window.addEventListener("load", () => {
+  document.body.style.opacity = "1";
+});
+</script>
+
+</body>
+</html>

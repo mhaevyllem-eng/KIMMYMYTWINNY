@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.O.S. - ARCHIVE 01</title>
+
+<style>
+body {
+    background: url("https://i.postimg.cc/Xvz1vLNq/bgoption2.webp") no-repeat center center fixed;
+    background-size: cover;
+
+    color: #e0e0e0;
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+    cursor: crosshair;
+}
+
+    /* Foggy/Vignette Effect */
+    .overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle at center, transparent 20%, black 90%);
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    /* Red Scanlines (parang lumang TV) */
+    body::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        z-index: 2;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+    }
+
+    .glitch {
+        font-size: 4rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        position: relative;
+        color: white;
+        text-shadow: 2px 2px #ff0000, -2px -2px #0000ff;
+        animation: shake 0.5s infinite;
+    }
+
+    @keyframes shake {
+        0% { transform: translate(0); }
+        25% { transform: translate(2px, -2px); }
+        50% { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
+        75% { transform: translate(1px, -1px); }
+        100% { transform: translate(0); }
+    }
+
+    .terminal-box {
+        background: rgba(10, 0, 0, 0.9);
+        border: 1px solid #600;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 0 20px #400;
+        border-radius: 5px;
+        animation: flicker 3s infinite;
+    }
+
+    @keyframes flicker {
+        0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 0.99; }
+        20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.4; }
+    }
+
+    .enter-btn {
+        background: #600;
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        margin-top: 30px;
+        font-family: 'Courier New';
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.5s;
+        box-shadow: 0 0 10px #600;
+    }
+
+    .enter-btn:hover {
+        background: white;
+        color: black;
+        box-shadow: 0 0 30px white;
+        letter-spacing: 5px;
+    }
+</style>
+
+</head>
+<body>
+
+
+
+<audio id="bgMusic" loop>
+    <source src="mainsound.mp3" type="audio/mpeg">
+</audio>
+
+
+
+    <div class="overlay"></div>
+    
+    <main>
+        <h1 class="glitch" data-text="KIM YEONAH">LOST AND FOUND</h1>
+        <p style="text-align: center; letter-spacing: 2px;">STATUS: HIDDEN LEADER</p>
+        
+        <div class="terminal-box">
+            <p>> System: High Intelligence Detected...</p>
+            <p>> System: Visuals... Error: Too Pretty...</p>
+            <p>> Escape Room Level: Mastermind.</p>
+        </div>
+
+        <button class="enter-btn">ACCESS ARCHIVE</button>
+    </main>
+
+<script>
+    const btn = document.querySelector('.enter-btn');
+
+btn.addEventListener('click', () => {
+    let answer = prompt("To enter the archive, solve this:\n\n'I have no voice, but I can scream. I have no eyes, but I see your dreams. I hide in the dark, but I am not a ghost.'\n\n(Hint: 6 letters, starts with 'H')");
+
+    if (answer && answer.toLowerCase() === "horror") {
+        let proceed = confirm("ACCESS GRANTED.\n\nBut something feels... unfinished.\n\nDo you want to investigate further?");
+
+        if (proceed) {
+            window.location.href = "secretpage1.html";
+        } else {
+            alert("You chose to leave... for now.");
+        }
+
+    } else {
+        alert("WRONG. The shadows grow impatient.");
+    }
+});
+
+window.addEventListener("load", () => {
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.5;
+
+    music.play().catch(() => {
+        console.log("Autoplay blocked");
+    });
+});
+</script>
+</body>
+</html>

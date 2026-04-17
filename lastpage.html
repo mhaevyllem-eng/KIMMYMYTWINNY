@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ARCHIVE: END</title>
+
+<style>
+body {
+    background: url("https://i.postimg.cc/bYB7TZsP/endingpage.gif") center center / cover no-repeat;
+    color: white;
+    font-family: 'Courier New';
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+opacity: 1;
+transition: opacity 2s;
+}
+
+#text {
+    white-space: pre-line;
+    font-size: 18px;
+    line-height: 1.5;
+    text-shadow: 0 0 10px black;
+
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+.glitch {
+    position: relative;
+    color: white;
+    animation: glitch 1s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.glitch::before {
+    color: red;
+    z-index: -1;
+    animation: glitchTop 1s infinite;
+}
+
+.glitch::after {
+    color: cyan;
+    z-index: -2;
+    animation: glitchBottom 1s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: none; }
+    20% { transform: skew(-2deg); }
+    40% { transform: skew(2deg); }
+    60% { transform: translate(2px, 1px); }
+    80% { transform: translate(-2px, -1px); }
+    100% { transform: none; }
+}
+
+@keyframes glitchTop {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, -2px); }
+    40% { transform: translate(-1px, 1px); }
+    60% { transform: translate(-3px, 0); }
+    80% { transform: translate(2px, -1px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitchBottom {
+    0% { transform: translate(0); }
+    20% { transform: translate(2px, 2px); }
+    40% { transform: translate(1px, -1px); }
+    60% { transform: translate(3px, 0); }
+    80% { transform: translate(-2px, 1px); }
+    100% { transform: translate(0); }
+}
+
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+
+<h1 id="text" class="glitch" data-text=""></h1>
+
+    <p style="opacity:0.5; font-size:12px; margin-top:20px;">
+       for Kim Yeonah. I love you twin.
+    </p>
+
+    <p style="opacity:0.4; font-size:12px;">
+        Click it and wait for the suprise! 
+    </p>
+</div>
+
+
+
+
+<audio id="bgMusic">
+    <source src="endingsound.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+const message =
+"You made it.\n\n" +
+"This was never an escape room.\n" +
+"It was a way to understand you.\n\n" +
+"You were never lost -\n" +
+"You were just being seen in different ways.\n\n" +
+"If this felt like a game...\n" +
+"I'm glad you played it anyway.\n\n" +
+"--ARCHIVE CLOSED --";
+
+let i = 0;
+let speed = 50;
+
+const music = document.getElementById("bgMusic");
+music.volume = 0.5;
+
+function startEverything() {
+    // try play music FIRST (must be user gesture)
+    music.play().catch(() => {
+        console.log("blocked until click");
+    });
+
+    typeWriter();
+}
+
+// typing
+function typeWriter() {
+    const textEl = document.getElementById("text");
+
+    if (i < message.length) {
+        textEl.innerHTML += message.charAt(i);
+        textEl.setAttribute("data-text", textEl.innerHTML);
+        i++;
+        setTimeout(typeWriter, speed);
+    } else {
+    const remainingTime = 19000 - (i * speed);
+
+    setTimeout(() => {
+        document.body.style.opacity = "0";
+
+        setTimeout(() => {
+            window.location.href = "BONUS.html";
+        }, 2000);
+
+    }, remainingTime);
+}
+
+}
+
+// start on click (this is REQUIRED for audio)
+window.addEventListener("click", startEverything, { once: true });
+</script>
+
+</body>
+</html>
